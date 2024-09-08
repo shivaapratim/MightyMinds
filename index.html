@@ -16,6 +16,26 @@
             overflow-x: hidden;
         }
 
+        .navbar {
+            background-color: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+        }
+
+        .navbar-brand,
+        .nav-link {
+            color: #FFFFFF !important;
+            transition: color 0.3s ease;
+        }
+
+        .navbar-brand:hover,
+        .nav-link:hover {
+            color: #FFD700 !important;
+        }
+
+        .navbar-toggler-icon {
+            background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba(255, 255, 255, 0.85)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+        }
+
         .main-title {
             color: #FFFFFF;
             font-size: 4rem;
@@ -28,14 +48,13 @@
             color: #E0E0E0;
         }
 
-        .mission-card {
+        .mission-card,
+        .feature-card {
             border-radius: 20px;
             background: rgba(255, 255, 255, 0.9);
         }
 
         .feature-card {
-            border-radius: 15px;
-            background: rgba(255, 255, 255, 0.9);
             transition: transform 0.3s ease;
         }
 
@@ -106,269 +125,201 @@
                 transform: scale(1);
             }
         }
+
+        .fact-carousel {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            padding: 20px;
+            margin-bottom: 2rem;
+        }
+
+        .fact-card {
+            height: 150px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 20px;
+            font-size: 1.2rem;
+            color: #FFFFFF;
+        }
     </style>
 </head>
 
 <body>
-
-    <!DOCTYPE html>
-    <html lang="en">
-
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Mighty Minds</title>
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/feather-icons/4.28.0/feather.min.js"></script>
-        <style>
-            body {
-                background: linear-gradient(135deg, #6A11CB, #2575FC);
-                min-height: 100vh;
-                padding-top: 80px;
-                /* Added padding to account for fixed navbar */
-                overflow-x: hidden;
-            }
-
-            .navbar {
-                background-color: rgba(255, 255, 255, 0.1);
-                backdrop-filter: blur(10px);
-            }
-
-            .navbar-brand,
-            .nav-link {
-                color: #FFFFFF !important;
-                transition: color 0.3s ease;
-            }
-
-            .navbar-brand:hover,
-            .nav-link:hover {
-                color: #FFD700 !important;
-            }
-
-            .navbar-toggler-icon {
-                background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba(255, 255, 255, 0.85)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
-            }
-
-            /* Rest of your existing styles... */
-
-            .main-title {
-                color: #FFFFFF;
-                font-size: 4rem;
-                font-weight: bold;
-                text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
-            }
-
-            .subtitle {
-                font-size: 1.4rem;
-                color: #E0E0E0;
-            }
-
-            .mission-card {
-                border-radius: 20px;
-                background: rgba(255, 255, 255, 0.9);
-            }
-
-            .feature-card {
-                border-radius: 15px;
-                background: rgba(255, 255, 255, 0.9);
-                transition: transform 0.3s ease;
-            }
-
-            .feature-card:hover {
-                transform: scale(1.05) rotate(2deg);
-            }
-
-            .subject-card {
-                border-radius: 50%;
-                width: 120px;
-                height: 120px;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                transition: transform 0.3s ease;
-            }
-
-            .subject-card:hover {
-                transform: scale(1.1) rotate(5deg);
-            }
-
-            .floating {
-                animation: float 3s ease-in-out infinite;
-            }
-
-            @keyframes float {
-                0% {
-                    transform: translateY(0px);
-                }
-
-                50% {
-                    transform: translateY(-20px);
-                }
-
-                100% {
-                    transform: translateY(0px);
-                }
-            }
-
-            .rotating {
-                animation: rotate 20s linear infinite;
-            }
-
-            @keyframes rotate {
-                from {
-                    transform: rotate(0deg);
-                }
-
-                to {
-                    transform: rotate(360deg);
-                }
-            }
-
-            .pulsing {
-                animation: pulse 3s ease-in-out infinite;
-            }
-
-            @keyframes pulse {
-                0% {
-                    transform: scale(1);
-                }
-
-                50% {
-                    transform: scale(1.2);
-                }
-
-                100% {
-                    transform: scale(1);
-                }
-            }
-        </style>
-    </head>
-
-    <body>
-        <nav class="navbar navbar-expand-lg fixed-top">
-            <div class="container">
-                <a class="navbar-brand" href="index.html">Mighty Minds</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarNav">
-                    <ul class="navbar-nav ms-auto">
-                        <li class="nav-item">
-                            <a class="nav-link" href="index.html">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="about.html">About</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="learning.html">Playing Zone</a>
-                        </li>
-                    </ul>
-                </div>
+    <nav class="navbar navbar-expand-lg fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">Mighty Minds</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="about.html">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="learning.html">Playing Zone</a>
+                    </li>
+                </ul>
             </div>
-        </nav>
+        </div>
+    </nav>
 
-        <div class="container-fluid p-0">
-            <div class="position-relative">
-                <div class="position-absolute rotating" style="top: 20px; left: 20px; color: white;">
-                    <i data-feather="sun" class="feather-40"></i>
-                </div>
-                <div class="position-absolute floating" style="top: 100px; right: 50px; color: white;">
-                    <i data-feather="cloud" class="feather-50"></i>
-                </div>
-                <div class="position-absolute pulsing" style="bottom: 50px; left: 50px; color: white;">
-                    <i data-feather="star" class="feather-30"></i>
-                </div>
+    <div class="container-fluid p-0">
+        <div class="position-relative">
+            <div class="position-absolute rotating" style="top: 20px; left: 20px; color: white;">
+                <i data-feather="sun" class="feather-40"></i>
+            </div>
+            <div class="position-absolute floating" style="top: 100px; right: 50px; color: white;">
+                <i data-feather="cloud" class="feather-50"></i>
+            </div>
+            <div class="position-absolute pulsing" style="bottom: 50px; left: 50px; color: white;">
+                <i data-feather="star" class="feather-30"></i>
+            </div>
 
-                <h1 class="text-center mb-4 main-title">Welcome to Mighty Minds! 🚀</h1>
-                <p class="text-center mb-5 subtitle">Embark on an exciting journey of knowledge for students in
-                    grades 6-8
-                </p>
+            <h1 class="text-center mb-4 main-title">Welcome to Mighty Minds! 🚀</h1>
+            <p class="text-center mb-5 subtitle">Embark on an exciting journey of knowledge for students in
+                grades 6-8
+            </p>
 
-                <div class="row justify-content-center mb-5">
-                    <div class="col-md-8">
-                        <div class="card border-0 shadow-lg mission-card">
-                            <div class="card-body text-center p-5">
-                                <h2 class="mb-4" style="color: #4A148C;">Our Mission</h2>
-                                <p style="font-size: 1.2rem; color: #333;">
-                                    At Mighty Minds, we believe in making education fun and accessible.
-                                    Our interactive platform is designed to spark curiosity, foster creativity,
-                                    and build confidence in young learners. Join us on this exciting journey of
-                                    discovery!
-                                </p>
-                                <a href="/learning.html" class="btn btn-primary btn-lg mt-3"
-                                    style="background: linear-gradient(45deg, #FF6B6B, #4ECDC4); border: none; padding: 0.75rem 2rem; font-size: 1.2rem; font-weight: bold; box-shadow: 0 4px 6px rgba(0,0,0,0.1);">
-                                    Start Learning Now!
-                                </a>
+            <div class="row justify-content-center mb-5">
+                <div class="col-md-8">
+                    <div class="fact-carousel">
+                        <div id="factCarousel" class="carousel slide" data-bs-ride="carousel">
+                            <div class="carousel-inner">
+                                <!-- Fact cards will be inserted here by JavaScript -->
                             </div>
                         </div>
                     </div>
                 </div>
+            </div>
 
-                <h2 class="text-center mb-4" style="color: #FFFFFF; font-size: 2.5rem;">What We Offer</h2>
-                <div class="row row-cols-1 row-cols-md-2 g-4 justify-content-center mb-5" id="features"></div>
+            <div class="row justify-content-center mb-5">
+                <div class="col-md-8">
+                    <div class="card border-0 shadow-lg mission-card">
+                        <div class="card-body text-center p-5">
+                            <h2 class="mb-4" style="color: #4A148C;">Our Mission</h2>
+                            <p style="font-size: 1.2rem; color: #333;">
+                                At Mighty Minds, we believe in making education fun and accessible.
+                                Our interactive platform is designed to spark curiosity, foster creativity,
+                                and build confidence in young learners. Join us on this exciting journey of
+                                discovery!
+                            </p>
+                            <a href="/learning.html" class="btn btn-primary btn-lg mt-3"
+                                style="background: linear-gradient(45deg, #FF6B6B, #4ECDC4); border: none; padding: 0.75rem 2rem; font-size: 1.2rem; font-weight: bold; box-shadow: 0 4px 6px rgba(0,0,0,0.1);">
+                                Start Learning Now!
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
-                <h2 class="text-center mb-4" style="color: #FFFFFF; font-size: 2.5rem;">Explore Subjects</h2>
-                <div class="row row-cols-2 row-cols-md-3 row-cols-lg-6 g-4 justify-content-center" id="subjects"></div>
+            <h2 class="text-center mb-4" style="color: #FFFFFF; font-size: 2.5rem;">What We Offer</h2>
+            <div class="row row-cols-1 row-cols-md-2 g-4 justify-content-center mb-5" id="features"></div>
+
+            <h2 class="text-center mb-4" style="color: #FFFFFF; font-size: 2.5rem;">Explore Subjects</h2>
+            <div class="row row-cols-2 row-cols-md-3 row-cols-lg-6 g-4 justify-content-center" id="subjects"></div>
+
+            <div class="row justify-content-center mb-5">
+                <div class="col-md-8">
+                    <div class="card border-0 shadow-lg mission-card">
+                        <div class="card-body text-center p-5">
+                            <h2 class="mb-4" style="color: #4A148C;">Why Choose Mighty Minds?</h2>
+                            <p style="font-size: 1.2rem; color: #333;">
+                                Mighty Minds is more than just a learning platform – it's your personal academic
+                                adventure!
+                                We combine cutting-edge technology with engaging content to make learning an exciting
+                                journey.
+                                With personalized learning paths, interactive quizzes, and real-world applications,
+                                we ensure that every student can unlock their full potential. Join us and discover
+                                the joy of learning in a whole new way!
+                            </p>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
+    </div>
 
-        <script>
-            const features = [
-                { title: 'Interactive Lessons', description: 'Engage with fun, interactive lessons designed for grades 6-8', icon: '🎓' },
-                { title: 'Progress Tracking', description: 'Monitor your learning journey with easy-to-understand progress reports', icon: '📊' },
-                { title: 'Varied Subjects', description: 'Explore a wide range of subjects from math to science and beyond', icon: '🔬' },
-                { title: 'Rewards System', description: 'Earn badges and rewards as you complete lessons and challenges', icon: '🏅' },
-            ];
+    <script>
+        const features = [
+            { title: 'Interactive Lessons', description: 'Engage with fun, interactive lessons designed for grades 6-8', icon: '🎓', link: 'videos.html' },
+            { title: 'Progress Tracking', description: 'Monitor your learning journey with easy-to-understand progress reports', icon: '📊', link: 'progresstracking.html' },
+            { title: 'Varied Subjects', description: 'Explore a wide range of subjects from math to science and beyond', icon: '🔬', link: 'subjects.html' },
+            { title: 'Rewards System', description: 'Earn badges and rewards as you complete lessons and challenges', icon: '🏅', link: 'reward.html' },
+        ];
 
-            const subjects = [
-                { name: 'Math', icon: '🔢', color: '#FF6B6B' },
-                { name: 'Science', icon: '🧪', color: '#4ECDC4' },
-                { name: 'English', icon: '📚', color: '#45B7D1' },
-                { name: 'History', icon: '🏛', color: '#FFA07A' },
-                { name: 'Geography', icon: '🌍', color: '#98D8C8' },
-                { name: 'Art', icon: '🎨', color: '#FFBE7B' },
-            ];
+        const subjects = [
+            { name: 'Math', icon: '🔢', color: '#FF6B6B' },
+            { name: 'Science', icon: '🧪', color: '#4ECDC4' },
+            { name: 'English', icon: '📚', color: '#45B7D1' },
+            { name: 'History', icon: '🏛', color: '#FFA07A' },
+            { name: 'Geography', icon: '🌍', color: '#98D8C8' },
+            { name: 'Art', icon: '🎨', color: '#FFBE7B' },
+        ];
 
-            document.addEventListener('DOMContentLoaded', () => {
-                feather.replace();
+        const facts = [
+            "Did you know? The human brain has about 86 billion neurons!",
+            "Fun fact: A year on Mercury is just 88 days long!",
+            "Wow! The Great Wall of China is visible from space!",
+            "Amazing! Octopuses have three hearts and blue blood!",
+            "Incredible! Lightning strikes the Earth about 100 times every second!",
+        ];
 
-                const featuresContainer = document.getElementById('features');
-                features.forEach(feature => {
-                    const link = feature.title === 'Interactive Lessons' ? 'videos.html' : '#';
-                    featuresContainer.innerHTML += `
-        <div class="col">
-            <a href="${link}" class="text-decoration-none">
-                <div class="card h-100 border-0 shadow-lg feature-card">
-                    <div class="card-body text-center p-4">
-                        <div style="font-size: 3.5rem; margin-bottom: 1rem;">${feature.icon}</div>
-                        <h5 class="card-title" style="color: #4A148C; font-size: 1.4rem; font-weight: bold;">${feature.title}</h5>
-                        <p class="card-text" style="color: #333; font-size: 1.1rem;">${feature.description}</p>
+        document.addEventListener('DOMContentLoaded', () => {
+            feather.replace();
+
+            const featuresContainer = document.getElementById('features');
+            features.forEach(feature => {
+                featuresContainer.innerHTML += `
+                    <div class="col">
+                        <a href="${feature.link}" class="text-decoration-none">
+                            <div class="card h-100 border-0 shadow-lg feature-card">
+                                <div class="card-body text-center p-4">
+                                    <div style="font-size: 3.5rem; margin-bottom: 1rem;">${feature.icon}</div>
+                                    <h5 class="card-title" style="color: #4A148C; font-size: 1.4rem; font-weight: bold;">${feature.title}</h5>
+                                    <p class="card-text" style="color: #333; font-size: 1.1rem;">${feature.description}</p>
+                                </div>
+                            </div>
+                        </a>
                     </div>
-                </div>
-            </a>
-        </div>
-    `;
-                });
-
-                const subjectsContainer = document.getElementById('subjects');
-                subjects.forEach(subject => {
-                    subjectsContainer.innerHTML += `
-        <div class="col">
-            <a href="#" class="text-decoration-none">
-                <div class="card border-0 shadow-lg text-center subject-card" style="background: ${subject.color};">
-                    <div class="card-body">
-                        <div style="font-size: 2.5rem;">${subject.icon}</div>
-                        <div style="font-size: 0.9rem; font-weight: bold; color: #FFF;">${subject.name}</div>
-                    </div>
-                </div>
-            </a>
-        </div>
-    `;
-                });
+                `;
             });
-        </script>
-    </body>
 
-    </html>
+            const subjectsContainer = document.getElementById('subjects');
+            subjects.forEach(subject => {
+                subjectsContainer.innerHTML += `
+                    <div class="col" style="margin-bottom: 50px;">
+                        <a href="#" class="text-decoration-none">
+                            <div class="card border-0 shadow-lg text-center subject-card" style="background: ${subject.color};">
+                                <div class="card-body">
+                                    <div style="font-size: 2.5rem;">${subject.icon}</div>
+                                    <div style="font-size: 0.9rem; font-weight: bold; color: #FFF;">${subject.name}</div>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                `;
+            });
+
+            const carouselInner = document.querySelector('.carousel-inner');
+            facts.forEach((fact, index) => {
+                carouselInner.innerHTML += `
+                    <div class="carousel-item ${index === 0 ? 'active' : ''}">
+                        <div class="fact-card">
+                            <p>${fact}</p>
+                        </div>
+                    </div>
+                `;
+            });
+        });
+    </script>
+</body>
+
+</html>

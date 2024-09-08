@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Subjects - Mighty Minds</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/feather-icons/4.28.0/feather.min.js"></script>
+    <style>
+        body {
+            background: linear-gradient(135deg, #6A11CB, #2575FC);
+            min-height: 100vh;
+            padding: 4rem 1rem;
+            overflow-x: hidden;
+        }
+
+        .navbar {
+            background-color: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+        }
+
+        .navbar-brand,
+        .nav-link {
+            color: #FFFFFF !important;
+            transition: color 0.3s ease;
+        }
+
+        .navbar-brand:hover,
+        .nav-link:hover {
+            color: #FFD700 !important;
+        }
+
+        .navbar-toggler-icon {
+            background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba(255, 255, 255, 0.85)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+        }
+
+        .main-title {
+            color: #FFFFFF;
+            font-size: 3rem;
+            font-weight: bold;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .subject-card {
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 15px;
+            transition: transform 0.3s ease;
+        }
+
+        .subject-card:hover {
+            transform: scale(1.05);
+        }
+
+        .subject-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .topic-list {
+            list-style-type: none;
+            padding-left: 0;
+        }
+
+        .topic-list li {
+            margin-bottom: 0.5rem;
+        }
+
+        .topic-list li:before {
+            content: "✦";
+            margin-right: 0.5rem;
+            color: #6A11CB;
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">Mighty Minds</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="about.html">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="subjects.html">Subjects</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="learning.html">Playing Zone</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container mt-5">
+        <h1 class="text-center mb-5 main-title">Explore Our Subjects</h1>
+        <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4" id="subjectsContainer">
+            <!-- Subject cards will be dynamically inserted here -->
+        </div>
+    </div>
+
+    <script>
+        const subjects = [
+            {
+                name: 'Math',
+                icon: '🔢',
+                color: '#FF6B6B',
+                topics: ['Algebra', 'Geometry', 'Statistics', 'Probability']
+            },
+            {
+                name: 'Science',
+                icon: '🧪',
+                color: '#4ECDC4',
+                topics: ['Biology', 'Chemistry', 'Physics', 'Earth Science']
+            },
+            {
+                name: 'English',
+                icon: '📚',
+                color: '#45B7D1',
+                topics: ['Literature', 'Writing', 'Grammar', 'Vocabulary']
+            },
+            {
+                name: 'History',
+                icon: '🏛',
+                color: '#FFA07A',
+                topics: ['Ancient Civilizations', 'World History', 'American History', 'Civics']
+            },
+            {
+                name: 'Geography',
+                icon: '🌍',
+                color: '#98D8C8',
+                topics: ['Physical Geography', 'Human Geography', 'Maps and Cartography', 'Environmental Studies']
+            },
+            {
+                name: 'Art',
+                icon: '🎨',
+                color: '#FFBE7B',
+                topics: ['Drawing', 'Painting', 'Sculpture', 'Art History']
+            }
+        ];
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const subjectsContainer = document.getElementById('subjectsContainer');
+            subjects.forEach(subject => {
+                const subjectCard = document.createElement('div');
+                subjectCard.className = 'col';
+                subjectCard.innerHTML = `
+                    <div class="card h-100 subject-card" style="border-color: ${subject.color};">
+                        <div class="card-body text-center">
+                            <div class="subject-icon" style="color: ${subject.color};">${subject.icon}</div>
+                            <h5 class="card-title" style="color: ${subject.color};">${subject.name}</h5>
+                            <ul class="topic-list">
+                                ${subject.topics.map(topic => `<li>${topic}</li>`).join('')}
+                            </ul>
+                            <a href="#" class="btn btn-primary mt-3" style="background-color: ${subject.color}; border-color: ${subject.color};">Explore ${subject.name}</a>
+                        </div>
+                    </div>
+                `;
+                subjectsContainer.appendChild(subjectCard);
+            });
+        });
+    </script>
+</body>
+
+</html>

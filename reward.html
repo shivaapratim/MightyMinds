@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Learning Rewards</title>
+    <style>
+        body {
+            font-family: 'Comic Sans MS', cursive, sans-serif;
+            background-image: linear-gradient(to bottom right, #FF69B4, #BA55D3);
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .container {
+            background-color: rgba(255, 255, 255, 0.8);
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+            max-width: 800px;
+            width: 100%;
+        }
+
+        h1 {
+            color: #FF4500;
+            text-align: center;
+            font-size: 2.5em;
+            margin-bottom: 30px;
+        }
+
+        .rewards-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+        }
+
+        .reward-card {
+            background-color: #FFFFFF;
+            border-radius: 15px;
+            padding: 20px;
+            margin: 10px;
+            width: 200px;
+            text-align: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .reward-card:hover {
+            transform: scale(1.05);
+        }
+
+        .reward-card h2 {
+            color: #4B0082;
+            font-size: 1.5em;
+            margin-bottom: 10px;
+        }
+
+        .reward-icon {
+            font-size: 3em;
+            margin-bottom: 10px;
+        }
+
+        .points {
+            font-size: 1.2em;
+            font-weight: bold;
+            color: #FF8C00;
+        }
+
+        .total-points {
+            text-align: center;
+            font-size: 1.5em;
+            margin-bottom: 20px;
+            color: #4B0082;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>🏆 My Learning Rewards 🏆</h1>
+        <div class="total-points">
+            Total Points: <span style="color: #FF8C00;">1400</span>
+        </div>
+        <div class="rewards-container">
+            <div class="reward-card">
+                <div class="reward-icon">🎨</div>
+                <h2>Art Set</h2>
+                <p class="points">500 points</p>
+            </div>
+            <div class="reward-card">
+                <div class="reward-icon">🎮</div>
+                <h2>Game Time</h2>
+                <p class="points">300 points</p>
+            </div>
+            <div class="reward-card">
+                <div class="reward-icon">📚</div>
+                <h2>New Book</h2>
+                <p class="points">400 points</p>
+            </div>
+            <div class="reward-card">
+                <div class="reward-icon">🍦</div>
+                <h2>Ice Cream</h2>
+                <p class="points">200 points</p>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
