@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Mighty Minds</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #FFC0CB, #E6E6FA, #87CEFA, #98FB98);
+            min-height: 100vh;
+            padding-top: 60px;
+            /* Reduced padding to align content closer to the top */
+            margin: 0;
+            /* Remove default margin */
+        }
+
+        .navbar {
+            background-color: rgba(255, 255, 255, 0.9);
+            /* Increased opacity for better visibility */
+        }
+
+        .navbar-brand,
+        .nav-link {
+            color: #FF1493 !important;
+            transition: color 0.3s ease;
+        }
+
+        .navbar-brand:hover,
+        .nav-link:hover {
+            color: #FF69B4 !important;
+        }
+
+        .navbar-toggler-icon {
+            background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba(255, 20, 147, 0.85)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+        }
+
+        .container-fluid {
+            padding: 0;
+            /* Remove padding from container */
+        }
+
+        .content-wrapper {
+            background-color: rgba(255, 255, 255, 0.8);
+            padding: 2rem;
+            margin-top: 1rem;
+            /* Add some space between navbar and content */
+        }
+
+        h1 {
+            color: #FF1493;
+            font-size: 3rem;
+            text-align: center;
+            margin-bottom: 2rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .feature-card {
+            background-color: #fff;
+            border-radius: 15px;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .feature-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .feature-title {
+            font-size: 1.5rem;
+            color: #FF1493;
+            margin-bottom: 0.5rem;
+        }
+
+        .feature-description {
+            color: #333;
+        }
+
+        .cta-button {
+            display: block;
+            width: 200px;
+            margin: 2rem auto 0;
+            padding: 0.75rem 1.5rem;
+            background-color: #FF1493;
+            color: #fff;
+            text-align: center;
+            text-decoration: none;
+            border-radius: 25px;
+            font-weight: bold;
+            transition: background-color 0.3s ease;
+        }
+
+        .cta-button:hover {
+            background-color: #FF69B4;
+        }
+
+        .container-fluid {
+            padding-left: 20px;
+            padding-right: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg fixed-top">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="index.html">Mighty Minds</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="about.html">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="learning.html">Playing Zone</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container-fluid">
+        <div class="content-wrapper">
+            <h1>About Mighty Minds</h1>
+
+            <p class="lead text-center mb-5">
+                At Mighty Minds, we believe that every child is a natural explorer, ready to embark on exciting
+                journeys of discovery. Our mission is to nurture this innate curiosity and creativity, making learning
+                an unforgettable adventure!
+            </p>
+
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="feature-card">
+                        <div class="feature-icon">🚀</div>
+                        <h3 class="feature-title">Innovative Learning</h3>
+                        <p class="feature-description">We harness the power of technology to create immersive,
+                            interactive learning experiences that captivate young minds.</p>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="feature-card">
+                        <div class="feature-icon">🎨</div>
+                        <h3 class="feature-title">Creativity Unleashed</h3>
+                        <p class="feature-description">Our platform encourages creative thinking, allowing kids to
+                            explore concepts in unique and imaginative ways.</p>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="feature-card">
+                        <div class="feature-icon">🧩</div>
+                        <h3 class="feature-title">Adaptive Challenges</h3>
+                        <p class="feature-description">Our smart system adjusts to each child's pace, ensuring they're
+                            always engaged and motivated to learn more.</p>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="feature-card">
+                        <div class="feature-icon">🌟</div>
+                        <h3 class="feature-title">Fun-Filled Journey</h3>
+                        <p class="feature-description">Learning becomes an exciting adventure with our gamified
+                            approach, filled with rewards and celebrations.</p>
+                    </div>
+                </div>
+            </div>
+
+            <p class="text-center mt-5">
+                Join us on this incredible journey of discovery, where every lesson is an adventure, and every challenge
+                is an opportunity to grow. Let's inspire the innovators of tomorrow, today!
+            </p>
+
+            <a href="learning.html" class="cta-button">Start Your Adventure!</a>
+        </div>
+    </div>
+</body>
+
+</html>

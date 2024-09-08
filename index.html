@@ -248,7 +248,7 @@
     <body>
         <nav class="navbar navbar-expand-lg fixed-top">
             <div class="container">
-                <a class="navbar-brand" href="index.html">Learning Adventure</a>
+                <a class="navbar-brand" href="index.html">Mighty Minds</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
                     aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -281,7 +281,7 @@
                     <i data-feather="star" class="feather-30"></i>
                 </div>
 
-                <h1 class="text-center mb-4 main-title">Welcome to Learning Adventure! 🚀</h1>
+                <h1 class="text-center mb-4 main-title">Welcome to Mighty Minds! 🚀</h1>
                 <p class="text-center mb-5 subtitle">Embark on an exciting journey of knowledge for students in
                     grades 6-8
                 </p>
@@ -292,7 +292,7 @@
                             <div class="card-body text-center p-5">
                                 <h2 class="mb-4" style="color: #4A148C;">Our Mission</h2>
                                 <p style="font-size: 1.2rem; color: #333;">
-                                    At Learning Adventure, we believe in making education fun and accessible.
+                                    At Mighty Minds, we believe in making education fun and accessible.
                                     Our interactive platform is designed to spark curiosity, foster creativity,
                                     and build confidence in young learners. Join us on this exciting journey of
                                     discovery!
@@ -336,31 +336,36 @@
 
                 const featuresContainer = document.getElementById('features');
                 features.forEach(feature => {
+                    const link = feature.title === 'Interactive Lessons' ? 'videos.html' : '#';
                     featuresContainer.innerHTML += `
-                    <div class="col">
-                        <div class="card h-100 border-0 shadow-lg feature-card">
-                            <div class="card-body text-center p-4">
-                                <div style="font-size: 3.5rem; margin-bottom: 1rem;">${feature.icon}</div>
-                                <h5 class="card-title" style="color: #4A148C; font-size: 1.4rem; font-weight: bold;">${feature.title}</h5>
-                                <p class="card-text" style="color: #333; font-size: 1.1rem;">${feature.description}</p>
-                            </div>
-                        </div>
+        <div class="col">
+            <a href="${link}" class="text-decoration-none">
+                <div class="card h-100 border-0 shadow-lg feature-card">
+                    <div class="card-body text-center p-4">
+                        <div style="font-size: 3.5rem; margin-bottom: 1rem;">${feature.icon}</div>
+                        <h5 class="card-title" style="color: #4A148C; font-size: 1.4rem; font-weight: bold;">${feature.title}</h5>
+                        <p class="card-text" style="color: #333; font-size: 1.1rem;">${feature.description}</p>
                     </div>
-                `;
+                </div>
+            </a>
+        </div>
+    `;
                 });
 
                 const subjectsContainer = document.getElementById('subjects');
                 subjects.forEach(subject => {
                     subjectsContainer.innerHTML += `
-                    <div class="col">
-                        <div class="card border-0 shadow-lg text-center subject-card" style="background: ${subject.color};">
-                            <div class="card-body">
-                                <div style="font-size: 2.5rem;">${subject.icon}</div>
-                                <div style="font-size: 0.9rem; font-weight: bold; color: #FFF;">${subject.name}</div>
-                            </div>
-                        </div>
+        <div class="col">
+            <a href="#" class="text-decoration-none">
+                <div class="card border-0 shadow-lg text-center subject-card" style="background: ${subject.color};">
+                    <div class="card-body">
+                        <div style="font-size: 2.5rem;">${subject.icon}</div>
+                        <div style="font-size: 0.9rem; font-weight: bold; color: #FFF;">${subject.name}</div>
                     </div>
-                `;
+                </div>
+            </a>
+        </div>
+    `;
                 });
             });
         </script>

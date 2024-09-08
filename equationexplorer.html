@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Equation Explorer</title>
+    <style>
+        body,
+        html {
+            margin: 0;
+            padding: 0;
+            font-family: 'Arial Rounded MT Bold', 'Helvetica Rounded', Arial, sans-serif;
+            background: linear-gradient(135deg, #FF9A8B, #FF6B6B, #4169E1);
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .game-container {
+            background-color: rgba(255, 255, 255, 0.9);
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            width: 90%;
+            max-width: 600px;
+        }
+
+        h1 {
+            color: #FF4500;
+            text-align: center;
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px #FFD700;
+        }
+
+        .subtitle {
+            text-align: center;
+            color: #4169E1;
+            margin-bottom: 20px;
+        }
+
+        .equation-box {
+            background-color: #E6E6FA;
+            border-radius: 10px;
+            padding: 20px;
+            font-size: 2em;
+            text-align: center;
+            margin-bottom: 20px;
+            box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .input-group {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+
+        input {
+            font-size: 1.5em;
+            width: 100px;
+            text-align: center;
+            border: 3px solid #4169E1;
+            border-radius: 10px;
+            padding: 5px;
+            margin-right: 10px;
+        }
+
+        button {
+            background-color: #32CD32;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: 1.2em;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: transform 0.1s;
+        }
+
+        button:hover {
+            transform: scale(1.05);
+        }
+
+        .hint {
+            text-align: center;
+            color: #4169E1;
+            cursor: pointer;
+            margin-bottom: 20px;
+        }
+
+        .feedback {
+            text-align: center;
+            font-weight: bold;
+            font-size: 1.2em;
+            min-height: 30px;
+        }
+
+        .coins {
+            text-align: center;
+            font-size: 1.5em;
+            color: #FFD700;
+            margin-bottom: 20px;
+            text-shadow: 1px 1px #FFA500;
+        }
+
+        .difficulty {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .difficulty button {
+            margin: 0 5px;
+            background-color: #4169E1;
+        }
+
+        .progress {
+            text-align: center;
+            font-size: 1.2em;
+            color: #4169E1;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="game-container">
+        <h1>🧮 Equation Explorer 🚀</h1>
+        <p class="subtitle">Solve equations, earn coins, and become a math champion!</p>
+        <div class="equation-box" id="equation">Loading equation...</div>
+        <div class="input-group">
+            <input type="number" id="answer" placeholder="x = ?">
+            <button onclick="checkAnswer()">Submit</button>
+        </div>
+        <div class="hint" onclick="showHint()">💡 Need a hint?</div>
+        <div class="feedback" id="feedback"></div>
+        <div class="coins" id="coins">🪙 Coins: 0</div>
+        <div class="difficulty">
+            <button onclick="changeDifficulty('easy')">Easy</button>
+            <button onclick="changeDifficulty('medium')">Medium</button>
+            <button onclick="changeDifficulty('hard')">Hard</button>
+        </div>
+        <div class="progress">
+            <p>Level: <span id="difficulty-level">Easy</span></p>
+            <p>Solved: <span id="equations-solved">0</span> | Accuracy: <span id="accuracy">100%</span></p>
+        </div>
+    </div>
+    <script>
+        let correctAnswer;
+        let coins = 0;
+        let difficulty = 'easy';
+        let equationsSolved = 0;
+        let totalAttempts = 0;
+        let currentEquation = '';
+
+        function generateEquation() {
+            let a, b, c;
+            switch (difficulty) {
+                case 'easy':
+                    a = Math.floor(Math.random() * 10) + 1;
+                    b = Math.floor(Math.random() * 20) + 1;
+                    correctAnswer = Math.floor(Math.random() * 10) + 1;
+                    break;
+                case 'medium':
+                    a = Math.floor(Math.random() * 20) + 1;
+                    b = Math.floor(Math.random() * 50) + 1;
+                    correctAnswer = Math.floor(Math.random() * 20) + 1;
+                    break;
+                case 'hard':
+                    a = Math.floor(Math.random() * 50) + 1;
+                    b = Math.floor(Math.random() * 100) + 1;
+                    correctAnswer = Math.floor(Math.random() * 50) + 1;
+                    break;
+            }
+            c = a * correctAnswer + b;
+            currentEquation = `${a}x + ${b} = ${c}`;
+            document.getElementById('equation').innerText = currentEquation;
+            document.getElementById('answer').value = '';
+            document.getElementById('feedback').innerText = '';
+        }
+
+        function checkAnswer() {
+            let userAnswer = parseInt(document.getElementById('answer').value);
+            let feedback = document.getElementById('feedback');
+            totalAttempts++;
+            if (userAnswer === correctAnswer) {
+                feedback.innerText = '🎉 Correct! Youre a math genius! 🎉';
+                feedback.style.color = 'green';
+                coins += difficulty === 'easy' ? 10 : (difficulty === 'medium' ? 20 : 30);
+                document.getElementById('coins').innerText = `🪙 Coins: ${coins}`;
+                equationsSolved++;
+                updateProgress();
+                setTimeout(generateEquation, 1500);
+            } else {
+                feedback.innerText = '😕 Not quite. Give it another shot!';
+                feedback.style.color = 'red';
+            }
+        }
+
+        function showHint() {
+            let hint = `For the equation ${currentEquation}, try dividing both sides by the coefficient of x.`;
+            alert(hint);
+        }
+
+        function changeDifficulty(newDifficulty) {
+            difficulty = newDifficulty;
+            document.getElementById('difficulty-level').innerText = difficulty.charAt(0).toUpperCase() + difficulty.slice(1);
+            generateEquation();
+        }
+
+        function updateProgress() {
+            document.getElementById('equations-solved').innerText = equationsSolved;
+            let accuracy = totalAttempts > 0 ? Math.round((equationsSolved / totalAttempts) * 100) : 100;
+            document.getElementById('accuracy').innerText = `${accuracy}%`;
+        }
+
+        window.onload = function () {
+            generateEquation();
+            updateProgress();
+        };
+    </script>
+</body>
+
+</html>
