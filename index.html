@@ -248,85 +248,75 @@
     </div>
 
     <script>
-        document.addEventListener("DOMContentLoaded", function () {
+        const features = [
+            { title: 'Interactive Lessons', description: 'Engage with fun, interactive lessons designed for grades 6-8', icon: '🎓', link: './videos.html' },
+            { title: 'Progress Tracking', description: 'Monitor your learning journey with easy-to-understand progress reports', icon: '📊', link: './progresstracking.html' },
+            { title: 'Varied Subjects', description: 'Explore a wide range of subjects from math to science and beyond', icon: '🔬', link: './subjects.html' },
+            { title: 'Rewards System', description: 'Earn badges and rewards as you complete lessons and challenges', icon: '🏅', link: './reward.html' },
+        ];
+
+        const subjects = [
+            { name: 'Math', icon: '🔢', color: '#FF6B6B' },
+            { name: 'Science', icon: '🧪', color: '#4ECDC4' },
+            { name: 'English', icon: '📚', color: '#45B7D1' },
+            { name: 'History', icon: '🏛', color: '#FFA07A' },
+            { name: 'Geography', icon: '🌍', color: '#98D8C8' },
+            { name: 'Art', icon: '🎨', color: '#FFBE7B' },
+        ];
+
+        const facts = [
+            "Did you know? The human brain has about 86 billion neurons!",
+            "Fun fact: A year on Mercury is just 88 days long!",
+            "Wow! The Great Wall of China is visible from space!",
+            "Amazing! Octopuses have three hearts and blue blood!",
+            "Incredible! Lightning strikes the Earth about 100 times every second!",
+        ];
+
+        document.addEventListener('DOMContentLoaded', () => {
             feather.replace();
 
-            const featuresData = [
-                {
-                    title: "Interactive Quizzes",
-                    description: "Test your knowledge with fun quizzes and instant feedback.",
-                    icon: "activity",
-                },
-                {
-                    title: "Progress Tracking",
-                    description: "Monitor your learning journey with detailed progress reports.",
-                    icon: "bar-chart-2",
-                },
-                {
-                    title: "Expert Tips",
-                    description: "Get advice and tips from subject matter experts.",
-                    icon: "star",
-                },
-                {
-                    title: "Collaborative Learning",
-                    description: "Join group challenges and learn together.",
-                    icon: "users",
-                },
-            ];
-
-            const subjectsData = [
-                { name: "Mathematics", icon: "hash" },
-                { name: "Science", icon: "cpu" },
-                { name: "English", icon: "book" },
-                { name: "History", icon: "clock" },
-                { name: "Geography", icon: "map" },
-                { name: "Arts", icon: "feather" },
-            ];
-
-            const facts = [
-                "Did you know? The longest recorded flight of a chicken is 13 seconds!",
-                "Fun fact: Honey never spoils and can last thousands of years.",
-                "Math fact: Zero is the only number that cannot be represented in Roman numerals.",
-                "Science fact: Water can boil and freeze at the same time under certain conditions.",
-                "Learning fact: Reading out loud can improve memory retention.",
-            ];
-
-            // Features section
-            const featuresContainer = document.getElementById("features");
-            featuresData.forEach(feature => {
-                const card = document.createElement("div");
-                card.className = "col";
-                card.innerHTML = `
-                    <div class="card feature-card shadow-lg p-4 h-100">
-                        <div class="text-center mb-3">
-                            <i data-feather="${feature.icon}" class="feather-50" style="color:#4A148C;"></i>
-                        </div>
-                        <h5 class="card-title text-center">${feature.title}</h5>
-                        <p class="card-text text-center">${feature.description}</p>
+            const featuresContainer = document.getElementById('features');
+            features.forEach(feature => {
+                featuresContainer.innerHTML += `
+                    <div class="col">
+                        <a href="${feature.link}" class="text-decoration-none">
+                            <div class="card h-100 border-0 shadow-lg feature-card">
+                                <div class="card-body text-center p-4">
+                                    <div style="font-size: 3.5rem; margin-bottom: 1rem;">${feature.icon}</div>
+                                    <h5 class="card-title" style="color: #4A148C; font-size: 1.4rem; font-weight: bold;">${feature.title}</h5>
+                                    <p class="card-text" style="color: #333; font-size: 1.1rem;">${feature.description}</p>
+                                </div>
+                            </div>
+                        </a>
                     </div>
                 `;
-                featuresContainer.appendChild(card);
             });
 
-            // Subjects section
-            const subjectsContainer = document.getElementById("subjects");
-            subjectsData.forEach(subject => {
-                const card = document.createElement("div");
-                card.className = "col subject-card shadow-lg bg-white";
-                card.title = subject.name;
-                card.innerHTML = `<i data-feather="${subject.icon}" style="width:48px; height:48px; color:#4A148C;"></i>`;
-                subjectsContainer.appendChild(card);
+            const subjectsContainer = document.getElementById('subjects');
+            subjects.forEach(subject => {
+                subjectsContainer.innerHTML += `
+                    <div class="col" style="margin-bottom: 50px;">
+                        <a href="#" class="text-decoration-none">
+                            <div class="card border-0 shadow-lg text-center subject-card" style="background: ${subject.color};">
+                                <div class="card-body">
+                                    <div style="font-size: 2.5rem;">${subject.icon}</div>
+                                    <div style="font-size: 0.9rem; font-weight: bold; color: #FFF;">${subject.name}</div>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                `;
             });
 
-            feather.replace();
-
-            // Facts carousel
-            const carouselInner = document.querySelector("#factCarousel .carousel-inner");
+            const carouselInner = document.querySelector('.carousel-inner');
             facts.forEach((fact, index) => {
-                const carouselItem = document.createElement("div");
-                carouselItem.className = "carousel-item" + (index === 0 ? " active" : "");
-                carouselItem.innerHTML = `<div class="fact-card">${fact}</div>`;
-                carouselInner.appendChild(carouselItem);
+                carouselInner.innerHTML += `
+                    <div class="carousel-item ${index === 0 ? 'active' : ''}">
+                        <div class="fact-card">
+                            <p>${fact}</p>
+                        </div>
+                    </div>
+                `;
             });
         });
     </script>
