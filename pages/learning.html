@@ -16,7 +16,6 @@
       min-height: 100vh;
       background-attachment: fixed;
       padding-top: 80px;
-      /* Added padding to account for fixed navbar */
     }
 
     .navbar {
@@ -147,8 +146,7 @@
       { name: 'Human Body', emoji: '🩻', color: '#8A2BE2' },
       { name: 'Blinding Lights', emoji: '🔦', color: '#20B2AA' },
       { name: 'Equation Explorer', emoji: '🟰', color: '#d65a66' },
-      { name: 'Mensuration', emoji: '📐', color: '#4169E1' },
-
+      { name: 'Mensuration', emoji: '📐', color: '#4169E1' }
     ];
 
     function createTopicCards() {
@@ -158,19 +156,19 @@
         card.className = 'topic-card';
         card.style.backgroundColor = topic.color;
         card.innerHTML = `
-          <div class="topic-content">
-            <div class="topic-emoji">${topic.emoji}</div>
-            <div class="topic-name">${topic.name}</div>
-          </div>
-        `;
+        <div class="topic-content">
+          <div class="topic-emoji">${topic.emoji}</div>
+          <div class="topic-name">${topic.name}</div>
+        </div>
+      `;
         card.addEventListener('click', () => handleTopicClick(topic.name));
         topicGrid.appendChild(card);
       });
     }
 
     function handleTopicClick(topicName) {
-      const fileName = topicName.toLowerCase().replace(' ', '') + '.html';
-      window.location.href = fileName;
+      const fileName = topicName.toLowerCase().replace(/\s/g, '') + '.html';
+      window.location.href = `../games/${fileName}`; // 🧠 Go one level up, then into games/
     }
 
     createTopicCards();

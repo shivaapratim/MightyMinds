@@ -1,9 +1,3 @@
-
-
-
-
-
-
 // import React from 'react';
 // import { Container, Row, Col, Card, Button } from 'react-bootstrap';
 // import { motion } from 'framer-motion';
